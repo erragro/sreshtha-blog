@@ -1,6 +1,6 @@
 # Sreshtha blog
 
-The Meet the Builders submission blog for [Sreshtha](https://github.com/surajitchaudhuri/sreshtha),
+The Meet the Builders submission blog for [Sreshtha](https://github.com/erragro/sreshtha),
 an app for India's gig workers.
 
 Static Vite + Tailwind v4 site. Uses the same brand tokens as the
@@ -36,6 +36,6 @@ call the repo `sreshtha-blog`, `sreshtha-site`, or anything else.
 
 ## To swap
 
-- **Repo URL** in the blog: search `github.com/surajitchaudhuri/sreshtha`
-  in `index.html` and replace with the actual app-repo path.
+- **Repo URL** in the blog: search `github.com/erragro/sreshtha`
+  in `index.html` if the app repo moves.
 - **Byline**: search `Surajit Chaudhuri`.
