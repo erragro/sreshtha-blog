@@ -84,14 +84,12 @@ body {
 #tab-overview:checked ~ .tab-content#content-overview,
 #tab-how:checked      ~ .tab-content#content-how,
 #tab-google:checked   ~ .tab-content#content-google,
-#tab-econ:checked     ~ .tab-content#content-econ,
-#tab-dist:checked     ~ .tab-content#content-dist       { display: block; }
+#tab-econ:checked     ~ .tab-content#content-econ       { display: block; }
 
 #tab-overview:checked ~ .tab-nav label[for="tab-overview"],
 #tab-how:checked      ~ .tab-nav label[for="tab-how"],
 #tab-google:checked   ~ .tab-nav label[for="tab-google"],
-#tab-econ:checked     ~ .tab-nav label[for="tab-econ"],
-#tab-dist:checked     ~ .tab-nav label[for="tab-dist"] {
+#tab-econ:checked     ~ .tab-nav label[for="tab-econ"] {
   color: var(--color-brand-700);
   border-bottom-color: var(--color-brand-500);
 }
@@ -99,8 +97,7 @@ body {
   #tab-overview:checked ~ .tab-nav label[for="tab-overview"],
   #tab-how:checked      ~ .tab-nav label[for="tab-how"],
   #tab-google:checked   ~ .tab-nav label[for="tab-google"],
-  #tab-econ:checked     ~ .tab-nav label[for="tab-econ"],
-  #tab-dist:checked     ~ .tab-nav label[for="tab-dist"] {
+  #tab-econ:checked     ~ .tab-nav label[for="tab-econ"] {
     color: var(--color-brand-200);
   }
 }

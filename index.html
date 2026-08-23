@@ -77,14 +77,12 @@
     <input type="radio" name="tab" id="tab-how">
     <input type="radio" name="tab" id="tab-google">
     <input type="radio" name="tab" id="tab-econ">
-    <input type="radio" name="tab" id="tab-dist">
 
     <nav class="tab-nav" role="tablist">
       <label for="tab-overview">Overview</label>
       <label for="tab-how">How it works</label>
       <label for="tab-google">Google stack</label>
       <label for="tab-econ">Economics</label>
-      <label for="tab-dist">Distribution</label>
     </nav>
 
     <!-- ============ TAB 1: OVERVIEW ============ -->
@@ -400,13 +398,14 @@
           grammar is flawless. The legal meaning is destroyed.
         </p>
         <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
-          Sreshtha detects known idioms with an Aho-Corasick automaton
-          (roughly 200 microseconds per scan, regardless of clause
-          length), swaps them for opaque placeholder tokens before
-          Mayura sees the text, and splices in hand-curated
-          target-language equivalents after Mayura returns. The idiom
-          never touches the general-purpose translator. Expanding the
-          library is a no-code admin action.
+          Sreshtha detects known idioms with an in-house
+          pattern-matching engine (roughly 200 microseconds per scan,
+          regardless of clause length), swaps them for opaque
+          placeholder tokens before Mayura sees the text, and splices
+          in hand-curated target-language equivalents after Mayura
+          returns. The idiom never touches the general-purpose
+          translator. Expanding the library is a no-code admin
+          action.
         </p>
         <figure class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-8">
           <div class="rounded-lg border border-neutral-200 dark:border-neutral-800 p-4 bg-neutral-50/60 dark:bg-neutral-900/40">
@@ -734,128 +733,6 @@
 
     </div><!-- end #content-econ -->
 
-    <!-- ============ TAB 5: DISTRIBUTION ============ -->
-    <div class="tab-content" id="content-dist">
-
-      <section>
-        <h2 class="text-2xl font-bold tracking-tight mb-3">Free for the worker. Paid by institutions.</h2>
-        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
-          The willingness to pay among Indian blue-collar gig workers is
-          notoriously low, and the friction of digital payment
-          conversion eats what little margin remains. Sreshtha is
-          engineered as B2B2C from day one: worker-facing but sold to
-          institutions that have both the budget and the mandate to
-          reach this exact demographic.
-        </p>
-      </section>
-
-      <section>
-        <h3 class="text-xl font-semibold mt-10 mb-3">Three institutional channels</h3>
-
-        <div class="rounded-lg border border-brand-200 dark:border-brand-900/60 p-5 my-4 bg-brand-50/40 dark:bg-brand-900/10">
-          <div class="text-[11px] font-semibold uppercase tracking-widest text-brand-700 dark:text-brand-200 mb-2">Channel 1 · State welfare boards</div>
-          <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed m-0">
-            States already collect a 1-5% cess on aggregator platform
-            transactions under the Code on Social Security 2020 and its
-            state-level counterparts. The money is there. What states
-            lack is a localised digital surface to distribute the
-            resulting benefits efficiently. Sreshtha solves the
-            distribution problem by packaging Rights Guide, Schemes
-            Finder, and Complaint Helper as an annual per-registered-worker
-            contract. Indicative pricing:
-            <strong>₹300&nbsp;–&nbsp;800 per registered worker per year</strong>.
-            The state gets turnkey digital infrastructure; Sreshtha
-            secures a scalable, high-volume revenue channel.
-          </p>
-        </div>
-
-        <div class="rounded-lg border border-brand-200 dark:border-brand-900/60 p-5 my-4 bg-brand-50/40 dark:bg-brand-900/10">
-          <div class="text-[11px] font-semibold uppercase tracking-widest text-brand-700 dark:text-brand-200 mb-2">Channel 2 · Labour unions (white-label)</div>
-          <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-3">
-            Unions have members and legitimacy but struggle to provide
-            daily digital value outside of crises. A union pays an
-            annual subscription sized to its membership. Members
-            download the app branded with the union's identity, powered
-            entirely by the Sreshtha stack.
-          </p>
-          <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed m-0">
-            The union additionally gets an <strong>advocacy dashboard</strong>:
-            aggregated, privacy-respecting data on which contract
-            clauses cluster around risk, where complaints geographically
-            concentrate, and which platforms generate the highest
-            grievance volume. Grievances can be custom-routed to the
-            union's own paralegal desks. Retention tool for the union,
-            zero-marketing-spend distribution for Sreshtha.
-          </p>
-        </div>
-
-        <div class="rounded-lg border border-brand-200 dark:border-brand-900/60 p-5 my-4 bg-brand-50/40 dark:bg-brand-900/10">
-          <div class="text-[11px] font-semibold uppercase tracking-widest text-brand-700 dark:text-brand-200 mb-2">Channel 3 · Curated sponsors</div>
-          <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed m-0">
-            The platform is a qualified environment for insurance
-            providers and responsibly-priced fintechs. Sponsorship
-            placements (accident insurance, low-APR credit products,
-            savings products) sit against a strict allowlist of
-            IRDAI-registered insurers and RBI-regulated lenders. Every
-            placement is audited before appearing. This is not an ad
-            network. This is a curated referral surface with
-            regulator-verified counterparties.
-          </p>
-        </div>
-      </section>
-
-      <section>
-        <h3 class="text-xl font-semibold mt-10 mb-3">Bright lines</h3>
-        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
-          Three non-negotiables, published so partners and workers can
-          hold Sreshtha to them:
-        </p>
-        <ul class="space-y-3 list-none p-0 my-4">
-          <li class="rounded-lg border border-red-300/60 dark:border-red-900/60 bg-red-50/50 dark:bg-red-950/20 p-4">
-            <span class="font-semibold text-red-800 dark:text-red-200">No open ad networks.</span>
-            <span class="text-neutral-700 dark:text-neutral-300">
-              No Google Ads, no Meta audience network. Programmatic
-              inventory means loss of control over what gets served to
-              a vulnerable audience, and it opens the door to predatory
-              lending advertising.
-            </span>
-          </li>
-          <li class="rounded-lg border border-red-300/60 dark:border-red-900/60 bg-red-50/50 dark:bg-red-950/20 p-4">
-            <span class="font-semibold text-red-800 dark:text-red-200">No data sale.</span>
-            <span class="text-neutral-700 dark:text-neutral-300">
-              To brokers, to platforms, to research firms, ever.
-              Anonymisation does not qualify as an exception. Workers
-              are exposing their legal vulnerabilities on this
-              platform; selling that data destroys the platform's
-              credibility the moment it happens.
-            </span>
-          </li>
-          <li class="rounded-lg border border-red-300/60 dark:border-red-900/60 bg-red-50/50 dark:bg-red-950/20 p-4">
-            <span class="font-semibold text-red-800 dark:text-red-200">No commission-earning referrals above 24% APR.</span>
-            <span class="text-neutral-700 dark:text-neutral-300">
-              A hard cap on the effective interest rate of any lender
-              partner that Sreshtha earns commission from. Above the
-              cap, the platform will not accept the placement even if
-              the lender is regulator-approved.
-            </span>
-          </li>
-        </ul>
-      </section>
-
-      <section>
-        <h3 class="text-xl font-semibold mt-10 mb-3">Defensibility compounds in the corpus</h3>
-        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed">
-          Every contract processed adds template variants to the corpus.
-          Every complaint drafted refines the routing rules. Every idiom
-          added by an admin tightens the translation register for every
-          future worker. A general-purpose translator can be pointed at
-          gig-worker documents, but it cannot compound on curated
-          corrections it does not know it needs. The moat is built one
-          contract, one idiom, one routing rule at a time.
-        </p>
-      </section>
-
-    </div><!-- end #content-dist -->
 
   </div><!-- end .tabs -->
 
@@ -865,11 +742,11 @@
   <section>
     <h2 class="text-2xl font-bold tracking-tight mb-3">Source</h2>
     <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed">
-      Full source is on GitHub at
+      Source repository at
       <a class="underline underline-offset-2 text-brand-600 dark:text-brand-300 hover:text-brand-700 dark:hover:text-brand-200"
          href="https://github.com/erragro/sreshtha">
         github.com/erragro/sreshtha
-      </a>. Released under the MIT License, © Surajit Chaudhuri.
+      </a>. © 2026 Surajit Chaudhuri. All rights reserved.
     </p>
   </section>
 
