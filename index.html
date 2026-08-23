@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Sreshtha: an app for India's gig workers</title>
-  <meta name="description" content="Sreshtha is a mobile-first app that gives India's 77-lakh-strong gig workforce access to contract explanations, rights guidance, and complaint drafting, in the languages they actually speak.">
+  <meta name="description" content="Sreshtha is a mobile-first app that gives India's 7.7-million-strong gig workforce access to contract explanations, rights guidance, and complaint drafting, in the languages they actually speak. Built on Google Gemini.">
   <meta name="author" content="Surajit Chaudhuri">
   <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg">
   <meta property="og:title" content="Sreshtha: an app for India's gig workers">
-  <meta property="og:description" content="Contract explanations, rights guidance, and complaint drafting for India's gig workers, in the languages they actually speak.">
+  <meta property="og:description" content="Contract explanations, rights guidance, and complaint drafting for India's gig workers, in the languages they actually speak. Built on Google Gemini.">
   <meta property="og:type" content="article">
   <meta name="theme-color" content="#312e81">
 </head>
@@ -28,7 +28,7 @@
 
 <main class="mx-auto max-w-3xl px-6 py-12 md:py-16">
 
-  <!-- Hero -->
+  <!-- Hero (shared across tabs) -->
   <section class="mb-10">
     <span class="inline-block rounded-full bg-brand-50 dark:bg-brand-900/30 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-brand-700 dark:text-brand-200 mb-5">
       Meet the Builders, Gen AI Academy APAC
@@ -38,8 +38,9 @@
     </h1>
     <p class="text-xl leading-snug text-neutral-700 dark:text-neutral-300 mb-8">
       Contract explanations, rights guidance, and complaint drafting, in
-      the languages workers actually speak. Powered by Google Gemini and
-      Sarvam Mayura, on an in-house Indic vision stack.
+      the languages workers actually speak. Powered by
+      <span class="whitespace-nowrap">Google Gemini 2.5 Flash</span>
+      on Vertex AI, with Sarvam Mayura for Indic translation.
     </p>
     <div class="flex items-center gap-3 pb-6 border-b border-neutral-200 dark:border-neutral-800">
       <div class="grid size-9 place-items-center rounded-full bg-gradient-to-br from-brand-500 to-brand-700 text-white text-xs font-semibold">
@@ -53,7 +54,7 @@
     </div>
   </section>
 
-  <!-- Hero screenshot -->
+  <!-- Hero screenshot (shared) -->
   <figure class="mb-12">
     <img
       src="%BASE_URL%screenshots/product-contract-detail-hindi.png"
@@ -62,7 +63,7 @@
       loading="lazy"
     >
     <figcaption class="mt-2 text-[13px] leading-relaxed text-neutral-500 dark:text-neutral-400">
-      Contract Reader: a delivery partner agreement, analysed clause by
+      Contract Reader. A delivery partner agreement, analysed clause by
       clause, with explanations, implications, and suggested actions
       rendered in Hindi. The original clause text stays in the language
       it was signed in. A red, amber, or green pill marks each clause's
@@ -70,327 +71,797 @@
     </figcaption>
   </figure>
 
-  <!-- The gap -->
-  <section>
-    <h2 class="text-2xl font-bold tracking-tight mt-14 mb-3">The gap</h2>
-    <p class="text-lg leading-relaxed text-neutral-700 dark:text-neutral-300 mb-4">
-      Every major gig platform in India onboards workers in English or
-      Hindi only. Contracts arrive in legalese. Government welfare
-      schemes that these workers now qualify for under national law go
-      unclaimed. Grievance recourse is buried in official portals whose
-      URLs workers have never seen.
-    </p>
-    <p class="mb-4 text-neutral-700 dark:text-neutral-300 leading-relaxed">
-      The workforce this affects is large today and larger tomorrow.
-    </p>
+  <!-- ============ TABS ============ -->
+  <div class="tabs">
+    <input type="radio" name="tab" id="tab-overview" checked>
+    <input type="radio" name="tab" id="tab-how">
+    <input type="radio" name="tab" id="tab-google">
+    <input type="radio" name="tab" id="tab-econ">
+    <input type="radio" name="tab" id="tab-dist">
 
-    <ul class="grid grid-cols-1 sm:grid-cols-3 gap-3 my-8 list-none p-0">
-      <li class="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/40 p-5">
-        <span class="block font-mono text-3xl font-semibold tracking-tight text-brand-700 dark:text-brand-200 leading-none">
-          7.7 M
-        </span>
-        <span class="block mt-2 text-[13px] leading-snug text-neutral-500 dark:text-neutral-400">
-          Indian gig workers in 2020&#8209;21 <sup class="text-[10px]"><a href="#ref-1" class="text-brand-600 dark:text-brand-300">[1]</a></sup>
-        </span>
-      </li>
-      <li class="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/40 p-5">
-        <span class="block font-mono text-3xl font-semibold tracking-tight text-brand-700 dark:text-brand-200 leading-none">
-          23.5 M
-        </span>
-        <span class="block mt-2 text-[13px] leading-snug text-neutral-500 dark:text-neutral-400">
-          Projected by 2029&#8209;30, roughly 4.1% of the total workforce <sup class="text-[10px]"><a href="#ref-1" class="text-brand-600 dark:text-brand-300">[1]</a></sup>
-        </span>
-      </li>
-      <li class="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/40 p-5">
-        <span class="block font-mono text-3xl font-semibold tracking-tight text-brand-700 dark:text-brand-200 leading-none">
-          7 languages
-        </span>
-        <span class="block mt-2 text-[13px] leading-snug text-neutral-500 dark:text-neutral-400">
-          Hindi, Bengali, Tamil, Telugu, Kannada, Marathi, English, all with tone control
-        </span>
-      </li>
-    </ul>
+    <nav class="tab-nav" role="tablist">
+      <label for="tab-overview">Overview</label>
+      <label for="tab-how">How it works</label>
+      <label for="tab-google">Google stack</label>
+      <label for="tab-econ">Economics</label>
+      <label for="tab-dist">Distribution</label>
+    </nav>
 
-    <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed">
-      The Code on Social Security 2020 <sup class="text-[10px]"><a href="#ref-2" class="text-brand-600 dark:text-brand-300">[2]</a></sup> formally recognised
-      platform-based gig workers as a distinct category for the first
-      time, mandating a national Social Security Fund. State welfare
-      boards followed: Rajasthan operationalised its board in 2023
-      <sup class="text-[10px]"><a href="#ref-3" class="text-brand-600 dark:text-brand-300">[3]</a></sup>, Karnataka in 2024 <sup class="text-[10px]"><a href="#ref-4" class="text-brand-600 dark:text-brand-300">[4]</a></sup>. The rights exist. The
-      information architecture around them does not.
-    </p>
-  </section>
+    <!-- ============ TAB 1: OVERVIEW ============ -->
+    <div class="tab-content" id="content-overview">
 
-  <!-- What Sreshtha is -->
-  <section>
-    <h2 class="text-2xl font-bold tracking-tight mt-14 mb-3">What Sreshtha is</h2>
-    <div class="rounded-xl border border-brand-200/60 dark:border-brand-900/60 bg-brand-50/60 dark:bg-brand-900/20 p-5 my-6">
-      <p class="text-neutral-800 dark:text-neutral-100 leading-relaxed m-0">
-        A worker-first mobile app that gives Indian gig workers access
-        to their contracts, rights, and welfare entitlements, in the
-        language they actually read.
-      </p>
-    </div>
+      <section>
+        <h2 class="text-2xl font-bold tracking-tight mb-3">The gap</h2>
+        <p class="text-lg leading-relaxed text-neutral-700 dark:text-neutral-300 mb-4">
+          Every major gig platform in India onboards workers in English or
+          Hindi only. Contracts arrive in legalese. Government welfare
+          schemes that these workers now qualify for under national law go
+          unclaimed. Grievance recourse is buried in official portals whose
+          URLs workers have never seen.
+        </p>
+        <p class="mb-4 text-neutral-700 dark:text-neutral-300 leading-relaxed">
+          The workforce this affects is large today and larger tomorrow.
+        </p>
 
-    <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
-      One account, five modules, one shell. Modules unlock as they ship:
-    </p>
-
-    <ul class="space-y-3 my-6 list-none p-0">
-      <li class="rounded-lg border border-neutral-200 dark:border-neutral-800 p-4 bg-white dark:bg-neutral-900/40">
-        <div class="flex items-baseline gap-3">
-          <span class="text-[11px] font-semibold uppercase tracking-widest text-brand-700 dark:text-brand-200 shrink-0">Live</span>
-          <div>
-            <span class="font-semibold">Contract Reader.</span>
-            <span class="text-neutral-700 dark:text-neutral-300">
-              Upload a platform agreement (PDF or phone photo), receive a
-              clause-by-clause breakdown, statute citations, risk tiering, and
-              suggested actions.
+        <ul class="grid grid-cols-1 sm:grid-cols-3 gap-3 my-8 list-none p-0">
+          <li class="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/40 p-5">
+            <span class="block font-mono text-3xl font-semibold tracking-tight text-brand-700 dark:text-brand-200 leading-none">
+              7.7 M
             </span>
-          </div>
-        </div>
-      </li>
-      <li class="rounded-lg border border-neutral-200 dark:border-neutral-800 p-4 bg-white dark:bg-neutral-900/40">
-        <div class="flex items-baseline gap-3">
-          <span class="text-[11px] font-semibold uppercase tracking-widest text-neutral-400 shrink-0">Next</span>
-          <div>
-            <span class="font-semibold">Rights Guide.</span>
-            <span class="text-neutral-700 dark:text-neutral-300">
-              Curated fact cards on wages, injury, dismissal, harassment,
-              insurance, and grievance escalation. Every fact traces back to
-              statute.
+            <span class="block mt-2 text-[13px] leading-snug text-neutral-500 dark:text-neutral-400">
+              Indian gig workers in 2020&#8209;21 <sup class="text-[10px]"><a href="#ref-1" class="text-brand-600 dark:text-brand-300">[1]</a></sup>
             </span>
-          </div>
-        </div>
-      </li>
-      <li class="rounded-lg border border-neutral-200 dark:border-neutral-800 p-4 bg-white dark:bg-neutral-900/40">
-        <div class="flex items-baseline gap-3">
-          <span class="text-[11px] font-semibold uppercase tracking-widest text-neutral-400 shrink-0">Next</span>
-          <div>
-            <span class="font-semibold">Chatbot.</span>
-            <span class="text-neutral-700 dark:text-neutral-300">
-              Natural-language questions answered from the rights corpus, with
-              the worker's own uploaded documents in scope, citations attached
-              to every response.
+          </li>
+          <li class="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/40 p-5">
+            <span class="block font-mono text-3xl font-semibold tracking-tight text-brand-700 dark:text-brand-200 leading-none">
+              23.5 M
             </span>
-          </div>
-        </div>
-      </li>
-      <li class="rounded-lg border border-neutral-200 dark:border-neutral-800 p-4 bg-white dark:bg-neutral-900/40">
-        <div class="flex items-baseline gap-3">
-          <span class="text-[11px] font-semibold uppercase tracking-widest text-neutral-400 shrink-0">Next</span>
-          <div>
-            <span class="font-semibold">Schemes Finder.</span>
-            <span class="text-neutral-700 dark:text-neutral-300">
-              A three-question wizard that surfaces every central and state
-              scheme the worker qualifies for, with document checklists and
-              apply-link routing.
+            <span class="block mt-2 text-[13px] leading-snug text-neutral-500 dark:text-neutral-400">
+              Projected by 2029&#8209;30, roughly 4.1% of the total workforce <sup class="text-[10px]"><a href="#ref-1" class="text-brand-600 dark:text-brand-300">[1]</a></sup>
             </span>
-          </div>
-        </div>
-      </li>
-      <li class="rounded-lg border border-neutral-200 dark:border-neutral-800 p-4 bg-white dark:bg-neutral-900/40">
-        <div class="flex items-baseline gap-3">
-          <span class="text-[11px] font-semibold uppercase tracking-widest text-neutral-400 shrink-0">Next</span>
-          <div>
-            <span class="font-semibold">Complaint Helper.</span>
-            <span class="text-neutral-700 dark:text-neutral-300">
-              Draft a formal complaint in the worker's language, routed to the
-              right authority (state Labour Commissioner, e-Shram grievance
-              cell, POSH internal committee, or India Labourline).
+          </li>
+          <li class="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/40 p-5">
+            <span class="block font-mono text-3xl font-semibold tracking-tight text-brand-700 dark:text-brand-200 leading-none">
+              7 languages
             </span>
+            <span class="block mt-2 text-[13px] leading-snug text-neutral-500 dark:text-neutral-400">
+              Hindi, Bengali, Tamil, Telugu, Kannada, Marathi, English, all with tone control
+            </span>
+          </li>
+        </ul>
+
+        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+          The Code on Social Security 2020 <sup class="text-[10px]"><a href="#ref-2" class="text-brand-600 dark:text-brand-300">[2]</a></sup> formally recognised
+          platform-based gig workers as a distinct category for the first
+          time, mandating a national Social Security Fund. State welfare
+          boards followed: Rajasthan operationalised its board in 2023
+          <sup class="text-[10px]"><a href="#ref-3" class="text-brand-600 dark:text-brand-300">[3]</a></sup>, Karnataka in 2024 <sup class="text-[10px]"><a href="#ref-4" class="text-brand-600 dark:text-brand-300">[4]</a></sup>. The rights exist. The
+          information architecture around them does not.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold tracking-tight mt-14 mb-3">What Sreshtha is</h2>
+        <div class="rounded-xl border border-brand-200/60 dark:border-brand-900/60 bg-brand-50/60 dark:bg-brand-900/20 p-5 my-6">
+          <p class="text-neutral-800 dark:text-neutral-100 leading-relaxed m-0">
+            A worker-first mobile app that gives Indian gig workers access
+            to their contracts, rights, and welfare entitlements, in the
+            language they actually read.
+          </p>
+        </div>
+
+        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
+          One account, five modules, one shell. Modules unlock as they ship:
+        </p>
+
+        <ul class="space-y-3 my-6 list-none p-0">
+          <li class="rounded-lg border border-neutral-200 dark:border-neutral-800 p-4 bg-white dark:bg-neutral-900/40">
+            <div class="flex items-baseline gap-3">
+              <span class="text-[11px] font-semibold uppercase tracking-widest text-brand-700 dark:text-brand-200 shrink-0">Live</span>
+              <div>
+                <span class="font-semibold">Contract Reader.</span>
+                <span class="text-neutral-700 dark:text-neutral-300">
+                  Upload a platform agreement (PDF or phone photo), receive a
+                  clause-by-clause breakdown, statute citations, risk tiering, and
+                  suggested actions.
+                </span>
+              </div>
+            </div>
+          </li>
+          <li class="rounded-lg border border-neutral-200 dark:border-neutral-800 p-4 bg-white dark:bg-neutral-900/40">
+            <div class="flex items-baseline gap-3">
+              <span class="text-[11px] font-semibold uppercase tracking-widest text-neutral-400 shrink-0">Next</span>
+              <div>
+                <span class="font-semibold">Rights Guide.</span>
+                <span class="text-neutral-700 dark:text-neutral-300">
+                  Curated fact cards on wages, injury, dismissal, harassment,
+                  insurance, and grievance escalation. Every fact traces back to
+                  statute.
+                </span>
+              </div>
+            </div>
+          </li>
+          <li class="rounded-lg border border-neutral-200 dark:border-neutral-800 p-4 bg-white dark:bg-neutral-900/40">
+            <div class="flex items-baseline gap-3">
+              <span class="text-[11px] font-semibold uppercase tracking-widest text-neutral-400 shrink-0">Next</span>
+              <div>
+                <span class="font-semibold">Chatbot Sahaayak.</span>
+                <span class="text-neutral-700 dark:text-neutral-300">
+                  Natural-language questions answered from the rights corpus, with
+                  the worker's own uploaded documents in scope, citations attached
+                  to every response.
+                </span>
+              </div>
+            </div>
+          </li>
+          <li class="rounded-lg border border-neutral-200 dark:border-neutral-800 p-4 bg-white dark:bg-neutral-900/40">
+            <div class="flex items-baseline gap-3">
+              <span class="text-[11px] font-semibold uppercase tracking-widest text-neutral-400 shrink-0">Next</span>
+              <div>
+                <span class="font-semibold">Schemes Finder.</span>
+                <span class="text-neutral-700 dark:text-neutral-300">
+                  A three-question wizard that surfaces every central and state
+                  scheme the worker qualifies for, with document checklists and
+                  apply-link routing.
+                </span>
+              </div>
+            </div>
+          </li>
+          <li class="rounded-lg border border-neutral-200 dark:border-neutral-800 p-4 bg-white dark:bg-neutral-900/40">
+            <div class="flex items-baseline gap-3">
+              <span class="text-[11px] font-semibold uppercase tracking-widest text-neutral-400 shrink-0">Next</span>
+              <div>
+                <span class="font-semibold">Complaint Helper.</span>
+                <span class="text-neutral-700 dark:text-neutral-300">
+                  Draft a formal complaint in the worker's language, routed to the
+                  right authority (state Labour Commissioner, e-Shram grievance
+                  cell, POSH internal committee, or India Labourline).
+                </span>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+          Every module speaks seven Indic languages with four tone modes.
+          A worker who reads Hinglish gets Hinglish. A worker who reads
+          classical Marathi gets classical Marathi. That choice sits on the
+          upload form, not in a settings menu, because the wrong default
+          would lose the audience on first use.
+        </p>
+      </section>
+
+      <figure class="mt-10 mb-6">
+        <img
+          src="%BASE_URL%screenshots/product-contract-reader.png"
+          alt="Contract Reader upload form with a language selector, script toggle, and four tone options: Formal, Modern colloquial, Classic colloquial, Code-mixed."
+          class="w-full rounded-xl border border-neutral-200 dark:border-neutral-800"
+          loading="lazy"
+        >
+        <figcaption class="mt-2 text-[13px] leading-relaxed text-neutral-500 dark:text-neutral-400">
+          Upload form. Language, script, and tone are worker choices, not
+          defaults.
+        </figcaption>
+      </figure>
+
+      <section>
+        <h2 class="text-2xl font-bold tracking-tight mt-14 mb-3">Why now</h2>
+        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
+          Three tailwinds arrived within the last two years and none of
+          them existed simultaneously before:
+        </p>
+        <ul class="space-y-3 list-none p-0 my-6">
+          <li class="pl-4 border-l-2 border-brand-500">
+            <span class="font-semibold">Regulatory recognition.</span>
+            <span class="text-neutral-700 dark:text-neutral-300">
+              Sections 113 and 114 of the Code on Social Security 2020 <sup class="text-[10px]"><a href="#ref-2" class="text-brand-600 dark:text-brand-300">[2]</a></sup>
+              formally category-defined gig workers and created a legal basis
+              for welfare schemes. Karnataka <sup class="text-[10px]"><a href="#ref-4" class="text-brand-600 dark:text-brand-300">[4]</a></sup> and Rajasthan
+              <sup class="text-[10px]"><a href="#ref-3" class="text-brand-600 dark:text-brand-300">[3]</a></sup> now operate their own welfare boards.
+            </span>
+          </li>
+          <li class="pl-4 border-l-2 border-brand-500">
+            <span class="font-semibold">Indic-first AI matured.</span>
+            <span class="text-neutral-700 dark:text-neutral-300">
+              Google Gemini 2.5 Flash handles legal reasoning with a depth
+              general-purpose models did not have two years ago. Sarvam AI's
+              Mayura v1 covers seven Indic languages with fine-grained tone
+              control that Western LLMs do not expose. An application-layer
+              builder can now serve Indic-first users without training
+              models.
+            </span>
+          </li>
+          <li class="pl-4 border-l-2 border-brand-500">
+            <span class="font-semibold">Smartphone reach caught up.</span>
+            <span class="text-neutral-700 dark:text-neutral-300">
+              Most gig workers already use their platform's app daily. A
+              worker-facing app meets them on infrastructure they already
+              own.
+            </span>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold tracking-tight mt-14 mb-3">Trajectory</h2>
+        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+          Contract Reader is live. The four remaining modules ship on the
+          shell that already hosts it: shared auth, shared admin surface,
+          shared language and idiom infrastructure. The app itself is the
+          distribution unit; individual modules are the value delivered.
+          Post-app-launch: fine-tuned OCR on the specific document formats
+          Indian gig workers actually get (delivery agreements, welfare
+          board applications, insurance policy statements), per-state
+          complaint routing, and direct scheme application via portal
+          integrations where those exist.
+        </p>
+      </section>
+
+    </div><!-- end #content-overview -->
+
+    <!-- ============ TAB 2: HOW IT WORKS ============ -->
+    <div class="tab-content" id="content-how">
+
+      <section>
+        <h2 class="text-2xl font-bold tracking-tight mb-3">Reason in English. Translate at the edge.</h2>
+        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
+          Every reasoning step runs in English on Google Gemini 2.5 Flash,
+          and every translation step runs in the target Indic language on
+          Sarvam Mayura v1. This split is deliberate. It is also the
+          single most consequential design choice in the stack.
+        </p>
+        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
+          General-purpose Western LLMs have the highest density of legal
+          precedent, statutory language, and deterministic formatting in
+          their English weights. Ask Gemini to extract clauses from an
+          Indian labour contract, annotate them against the Code on
+          Social Security 2020, and rewrite them in plain language, and
+          it does the work reliably. Ask the same model to do all of that
+          <em>and</em> render the final output in classical colloquial
+          Marathi, and quality falls off. The failure is quiet, which
+          is the dangerous kind: fluent but subtly wrong.
+        </p>
+        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
+          Sarvam Mayura, purpose-built for Indic translation, does not
+          have general-purpose legal knowledge. Given a finished,
+          statute-annotated English rewrite, it produces high-fidelity
+          Hindi, Bengali, Tamil, Telugu, Kannada, or Marathi output at
+          four register modes. Isolating the two responsibilities across
+          two models means each one only ever does what it is best at.
+        </p>
+      </section>
+
+      <section>
+        <h3 class="text-xl font-semibold mt-10 mb-3">The three-stage Gemini pipeline</h3>
+        <ol class="space-y-4 my-6 list-none p-0 text-neutral-700 dark:text-neutral-300 leading-relaxed">
+          <li class="pl-4 border-l-2 border-brand-500">
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">Stage 1 — Extract.</span>
+            The contract's OCR'd text goes in. Gemini identifies the
+            contract type (aggregator, labour, vendor), extracts every
+            distinct clause, and labels the legal concepts each one
+            invokes. Structured output, strict JSON schema.
+          </li>
+          <li class="pl-4 border-l-2 border-brand-500">
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">Stage 2 — Annotate.</span>
+            Each clause is cross-referenced against Indian labour law:
+            Code on Social Security 2020 sections, Motor Vehicles Act
+            aggregator amendments, Fairwork India principles, state
+            gig-worker legislation. Every clause exits Stage 2 with a
+            risk tier (adverse, worth knowing, favourable) and a statute
+            reference where one applies.
+          </li>
+          <li class="pl-4 border-l-2 border-brand-500">
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">Stage 3 — Rewrite.</span>
+            Gemini produces the final worker-facing rendition, still in
+            English: original clause, plain-language explanation,
+            practical implication for the worker, and a suggested next
+            step. This is what Mayura eventually translates.
+          </li>
+        </ol>
+        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+          Each stage is a discrete Gemini call with a strict output
+          schema. Failures do not cascade: a failed Stage 2 falls back
+          to Stage 1-only output, so the worker sees the contract
+          explained even if statute annotation is temporarily
+          unavailable.
+        </p>
+      </section>
+
+      <section>
+        <h3 class="text-xl font-semibold mt-10 mb-3">Vision runs in-house</h3>
+        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
+          Contract images and PDFs go through Sreshtha's own EasyOCR
+          pipeline with per-language readers cached in memory. Worker
+          documents never leave the platform for a vendor's vision API.
+          Two consequences follow. First, the sensitive data (photos of
+          signed employment agreements, IDs, phone numbers) stays inside
+          the perimeter. Second, the path to fine-tuning on India-specific
+          document types (delivery partner agreements, Karnataka Welfare
+          Board forms, PMSBY policy statements) is realistic post-launch,
+          because Sreshtha owns the vision layer.
+        </p>
+        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+          Gemini Vision is a viable v2 swap if quality on rare scripts
+          proves insufficient. The pipeline is model-agnostic at the OCR
+          layer.
+        </p>
+      </section>
+
+      <section>
+        <h3 class="text-xl font-semibold mt-10 mb-3">An idiom library for cultural fidelity</h3>
+        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
+          General-purpose translation literalises idioms. The submission's
+          canonical example: <em>"at the end of the day"</em> in a payment
+          reconciliation clause. Baseline models translate it to a Hindi
+          phrase referring to the final hour of a work shift. A worker
+          reads that and assumes reconciliation runs at 11:59 pm every
+          night, rather than understanding the phrase means
+          <em>ultimately</em> or <em>in the final analysis</em>. The
+          grammar is flawless. The legal meaning is destroyed.
+        </p>
+        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
+          Sreshtha detects known idioms with an Aho-Corasick automaton
+          (roughly 200 microseconds per scan, regardless of clause
+          length), swaps them for opaque placeholder tokens before
+          Mayura sees the text, and splices in hand-curated
+          target-language equivalents after Mayura returns. The idiom
+          never touches the general-purpose translator. Expanding the
+          library is a no-code admin action.
+        </p>
+        <figure class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-8">
+          <div class="rounded-lg border border-neutral-200 dark:border-neutral-800 p-4 bg-neutral-50/60 dark:bg-neutral-900/40">
+            <div class="text-[11px] font-semibold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-2">Gemini English (source)</div>
+            <div class="text-[15px] leading-relaxed">
+              The company can revise per-order rates at its sole discretion.
+              Payments will be made weekly by bank transfer after any fees or
+              penalties are deducted.
+            </div>
           </div>
+          <div class="rounded-lg border border-neutral-200 dark:border-neutral-800 p-4 bg-neutral-50/60 dark:bg-neutral-900/40">
+            <div class="text-[11px] font-semibold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-2">Mayura, Hindi, code-mixed</div>
+            <div class="text-[15px] leading-relaxed" lang="hi">
+              Company आपको platform पर show होने वाले हर order के rates के हिसाब
+              से pay करेगी। ये rates कभी भी change हो सकते हैं। आपको bank
+              transfer से weekly payment मिलेगा, कोई भी fees या penalties लगने
+              के बाद।
+            </div>
+          </div>
+        </figure>
+      </section>
+
+      <figure class="my-8">
+        <img
+          src="%BASE_URL%screenshots/product-idiom-library.png"
+          alt="Idiom library admin panel showing idioms with source phrase, meaning, category badge, and coloured indicators for languages that have translations."
+          class="w-full rounded-xl border border-neutral-200 dark:border-neutral-800"
+          loading="lazy"
+        >
+        <figcaption class="mt-2 text-[13px] leading-relaxed text-neutral-500 dark:text-neutral-400">
+          Idiom library admin. Coloured dots show which of the six Indic
+          languages have translations for a given phrase.
+        </figcaption>
+      </figure>
+
+      <section>
+        <h3 class="text-xl font-semibold mt-10 mb-3">Chunked translation for real-world documents</h3>
+        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
+          A real delivery-partner agreement runs 90 or more clauses.
+          Naive per-clause translation hit Sarvam's rate limits during
+          benchmarking and turned an 18KB contract into an
+          <strong>11-minute</strong> translation job. A worker who has
+          just uploaded a photo of their contract will not wait 11
+          minutes on a mobile screen.
+        </p>
+        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+          Sreshtha packs multiple clauses into single Mayura calls,
+          separated by boundary tokens that the model is prompted to
+          preserve in its output. The same document now completes in
+          <strong>under a minute</strong>, with roughly a tenth of the
+          API calls. This is the difference between an app a worker
+          uses and an app a worker abandons on first upload.
+        </p>
+      </section>
+
+    </div><!-- end #content-how -->
+
+    <!-- ============ TAB 3: GOOGLE STACK ============ -->
+    <div class="tab-content" id="content-google">
+
+      <section>
+        <h2 class="text-2xl font-bold tracking-tight mb-3">Powered by Google AI</h2>
+        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-6">
+          Sreshtha's reasoning core is Google Gemini. Every clause a
+          worker sees explained, every risk tier applied, every statute
+          annotation added has passed through a Gemini call. The
+          following is an inventory of Google technology currently in
+          production, and Google technology on the near-term roadmap.
+        </p>
+      </section>
+
+      <section>
+        <h3 class="text-xl font-semibold mt-6 mb-3">In production today</h3>
+        <div class="overflow-x-auto -mx-2 sm:mx-0">
+          <table class="w-full text-sm border-collapse my-4 min-w-[500px]">
+            <thead>
+              <tr class="border-b border-neutral-300 dark:border-neutral-700 text-left">
+                <th class="py-2 px-3 font-semibold">Google tool</th>
+                <th class="py-2 px-3 font-semibold">Where in Sreshtha</th>
+              </tr>
+            </thead>
+            <tbody class="text-neutral-700 dark:text-neutral-300 align-top">
+              <tr class="border-b border-neutral-200 dark:border-neutral-800">
+                <td class="py-3 px-3 font-medium text-neutral-900 dark:text-neutral-100 whitespace-nowrap">Gemini 2.5 Flash</td>
+                <td class="py-3 px-3">
+                  Contract Reader's three reasoning stages (extract clauses
+                  → annotate against Indian labour law → rewrite for the
+                  worker). Runs entirely in English by design. Hosted on
+                  Vertex AI, region <code>asia-south1</code>.
+                </td>
+              </tr>
+              <tr class="border-b border-neutral-200 dark:border-neutral-800">
+                <td class="py-3 px-3 font-medium text-neutral-900 dark:text-neutral-100 whitespace-nowrap">Gemini 2.5 Flash&#8209;Lite</td>
+                <td class="py-3 px-3">
+                  Language detection and lighter classification calls
+                  where the cost floor matters more than the reasoning
+                  ceiling.
+                </td>
+              </tr>
+              <tr class="border-b border-neutral-200 dark:border-neutral-800">
+                <td class="py-3 px-3 font-medium text-neutral-900 dark:text-neutral-100 whitespace-nowrap">Vertex AI</td>
+                <td class="py-3 px-3">
+                  Hosts both Gemini models. Production auth via a service
+                  account (<code>GOOGLE_APPLICATION_CREDENTIALS</code> +
+                  <code>GOOGLE_CLOUD_PROJECT</code>). The
+                  <code>asia-south1</code> region keeps round-trip latency
+                  low for Indian users.
+                </td>
+              </tr>
+              <tr class="border-b border-neutral-200 dark:border-neutral-800">
+                <td class="py-3 px-3 font-medium text-neutral-900 dark:text-neutral-100 whitespace-nowrap">Google AI Studio</td>
+                <td class="py-3 px-3">
+                  Alternate auth path (<code>GEMINI_API_KEY</code>) for
+                  local development and solo-builder velocity. Zero
+                  service-account setup during iteration.
+                </td>
+              </tr>
+              <tr>
+                <td class="py-3 px-3 font-medium text-neutral-900 dark:text-neutral-100 whitespace-nowrap">google&#8209;genai SDK</td>
+                <td class="py-3 px-3">
+                  The Python client (v1.0+). Supports both Vertex AI and
+                  AI Studio auth paths from the same call sites.
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-      </li>
-    </ul>
+      </section>
 
-    <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed">
-      Every module speaks seven Indic languages with four tone modes.
-      A worker who reads Hinglish gets Hinglish. A worker who reads
-      classical Marathi gets classical Marathi. That choice sits on the
-      upload form, not in a settings menu, because the wrong default
-      would lose the audience on first use.
-    </p>
-  </section>
-
-  <figure class="mb-10">
-    <img
-      src="%BASE_URL%screenshots/product-contract-reader.png"
-      alt="Contract Reader upload form with a language selector, script toggle, and four tone options: Formal, Modern colloquial, Classic colloquial, Code-mixed."
-      class="w-full rounded-xl border border-neutral-200 dark:border-neutral-800 mt-6"
-      loading="lazy"
-    >
-    <figcaption class="mt-2 text-[13px] leading-relaxed text-neutral-500 dark:text-neutral-400">
-      Upload form. Language, script, and tone are worker choices, not
-      defaults.
-    </figcaption>
-  </figure>
-
-  <!-- Why it works -->
-  <section>
-    <h2 class="text-2xl font-bold tracking-tight mt-14 mb-3">Why the technical choices matter</h2>
-
-    <h3 class="text-lg font-semibold mt-8 mb-2">Deterministic reasoning in English, purpose-built translation into Indic languages.</h3>
-    <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
-      Google Gemini 2.5 Flash runs three analysis stages (extract
-      clauses, annotate with statute plus risk, rewrite for the worker)
-      always in English. Sarvam Mayura v1 translates the finished
-      English into the worker's target language. One language for
-      reasoning, one specialised model for translation. Simpler prompts,
-      more consistent output, cheaper per contract.
-    </p>
-
-    <h3 class="text-lg font-semibold mt-8 mb-2">Vision runs in-house.</h3>
-    <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
-      Contract images and PDFs go through Sreshtha's own EasyOCR
-      pipeline with per-language readers cached in memory. Worker
-      documents never leave the platform. The path to fine-tuning on
-      India-specific document types (delivery agreements, welfare
-      board forms, scheme applications) is realistic post-launch.
-    </p>
-
-    <h3 class="text-lg font-semibold mt-8 mb-2">An idiom library for cultural fidelity.</h3>
-    <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
-      General-purpose translation literalises idioms. "At the end of
-      the day" becomes a phrase about the final hour of a shift. This
-      is the invisible failure mode that makes translated text feel
-      foreign even when it is grammatically correct. Sreshtha detects
-      known idioms with an Aho-Corasick automaton (roughly 200
-      microseconds per scan), swaps them for opaque tokens before
-      Mayura sees the text, and splices in hand-curated target-language
-      equivalents after. The idiom never touches a general-purpose
-      translator. Growth of the library is a no-code admin action.
-    </p>
-
-    <figure class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-8">
-      <div class="rounded-lg border border-neutral-200 dark:border-neutral-800 p-4 bg-neutral-50/60 dark:bg-neutral-900/40">
-        <div class="text-[11px] font-semibold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-2">Gemini English (source)</div>
-        <div class="text-[15px] leading-relaxed">
-          The company can revise per-order rates at its sole discretion.
-          Payments will be made weekly by bank transfer after any fees or
-          penalties are deducted.
+      <section>
+        <h3 class="text-xl font-semibold mt-10 mb-3">On the near-term roadmap</h3>
+        <div class="overflow-x-auto -mx-2 sm:mx-0">
+          <table class="w-full text-sm border-collapse my-4 min-w-[500px]">
+            <thead>
+              <tr class="border-b border-neutral-300 dark:border-neutral-700 text-left">
+                <th class="py-2 px-3 font-semibold">Google tool</th>
+                <th class="py-2 px-3 font-semibold">Purpose</th>
+              </tr>
+            </thead>
+            <tbody class="text-neutral-700 dark:text-neutral-300 align-top">
+              <tr class="border-b border-neutral-200 dark:border-neutral-800">
+                <td class="py-3 px-3 font-medium text-neutral-900 dark:text-neutral-100 whitespace-nowrap">Cloud Run</td>
+                <td class="py-3 px-3">
+                  Production deploy of the FastAPI backend and Vite-built
+                  frontend. Autoscaling to zero fits the traffic profile of
+                  an early-stage worker-facing app.
+                </td>
+              </tr>
+              <tr class="border-b border-neutral-200 dark:border-neutral-800">
+                <td class="py-3 px-3 font-medium text-neutral-900 dark:text-neutral-100 whitespace-nowrap">Cloud Storage</td>
+                <td class="py-3 px-3">
+                  Encrypted at-rest storage for worker-uploaded contracts,
+                  with lifecycle policies that expire raw uploads after
+                  processing. Currently local disk during development.
+                </td>
+              </tr>
+              <tr>
+                <td class="py-3 px-3 font-medium text-neutral-900 dark:text-neutral-100 whitespace-nowrap">Gemini Vision</td>
+                <td class="py-3 px-3">
+                  A v2 alternative to the in-house EasyOCR pipeline for
+                  low-quality contract photos in rare scripts. Vision
+                  remains model-agnostic behind an internal interface.
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-      </div>
-      <div class="rounded-lg border border-neutral-200 dark:border-neutral-800 p-4 bg-neutral-50/60 dark:bg-neutral-900/40">
-        <div class="text-[11px] font-semibold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-2">Mayura, Hindi, code-mixed</div>
-        <div class="text-[15px] leading-relaxed" lang="hi">
-          Company आपको platform पर show होने वाले हर order के rates के हिसाब
-          से pay करेगी। ये rates कभी भी change हो सकते हैं। आपको bank
-          transfer से weekly payment मिलेगा, कोई भी fees या penalties लगने
-          के बाद।
+      </section>
+
+      <section>
+        <h3 class="text-xl font-semibold mt-10 mb-3">Why Gemini specifically</h3>
+        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
+          Three properties made Gemini the right choice for this
+          product's reasoning core:
+        </p>
+        <ol class="space-y-3 my-6 list-none p-0 text-neutral-700 dark:text-neutral-300 leading-relaxed">
+          <li class="pl-4 border-l-2 border-brand-500">
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">Structured output reliability.</span>
+            All three pipeline stages depend on strict JSON schemas.
+            Gemini 2.5 Flash follows response schemas without the
+            drift that would break downstream deterministic code.
+          </li>
+          <li class="pl-4 border-l-2 border-brand-500">
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">Latency profile.</span>
+            Contract Reader is interactive: a worker uploads and waits.
+            Gemini 2.5 Flash at Vertex AI's <code>asia-south1</code>
+            region hits a 90-clause contract's full three-stage pipeline
+            in the low tens of seconds.
+          </li>
+          <li class="pl-4 border-l-2 border-brand-500">
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">Legal-reasoning depth in English.</span>
+            The single most important quality metric for Sreshtha is
+            whether Stage 2's statute annotation is <em>accurate</em>.
+            Gemini's English legal training density is what makes the
+            annotation reliable enough to show to a worker who might
+            act on it.
+          </li>
+        </ol>
+      </section>
+
+    </div><!-- end #content-google -->
+
+    <!-- ============ TAB 4: ECONOMICS ============ -->
+    <div class="tab-content" id="content-econ">
+
+      <section>
+        <h2 class="text-2xl font-bold tracking-tight mb-3">The chatbot cost trap, and how it is contained</h2>
+        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
+          A worker-facing chatbot running at scale on general-purpose
+          LLMs is a compute pit. A single conversational turn costs
+          between <strong>₹3 and ₹8</strong> at list prices when you add
+          up Gemini generation, Mayura translation, vector retrieval,
+          and optional voice. At five million active users, twenty-five
+          percent of them using the chatbot for six turns a month, the
+          annual compute bill approaches
+          <strong>₹230 crore</strong>. No consumer app for gig workers
+          survives that.
+        </p>
+        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
+          Sreshtha's Chatbot Sahaayak is engineered to make that number
+          untrue. The architecture is <strong>retrieval-first</strong>:
+          every query first hits a vector index over the Rights Guide
+          fact cards and the worker's own uploaded contract clauses. If
+          the retrieval score exceeds a hard-coded confidence threshold,
+          the response is composed directly from the matched card plus a
+          citation. No LLM call happens at all. The system only escalates
+          to a full Gemini generation when nothing matches.
+        </p>
+        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
+          In benchmarking, this collapses raw LLM traffic by
+          <strong>60 to 80 percent</strong>. The cost of a
+          retrieval-served turn is a fraction of a rupee. Paired with a
+          soft cap on the free tier (ten LLM-generated responses per
+          month, unlimited retrieval-served answers), the fully loaded
+          cost per free-tier user stays under
+          <strong>₹15 per month</strong>. The unit economics work not
+          because the model is cheap, but because most questions do not
+          need one.
+        </p>
+      </section>
+
+      <section>
+        <h3 class="text-xl font-semibold mt-10 mb-3">Humane usage rules</h3>
+        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
+          Hard caps have failure modes. A worker in a genuine
+          crisis, drafting a safety complaint, cannot be blocked because
+          they used their ten free turns earlier in the month. The
+          system carries an explicit exemption: any action classified as
+          a safety-critical complaint or grievance draft bypasses the
+          rate cap. The exemption is logged and audited but not
+          gate-kept.
+        </p>
+      </section>
+
+      <section>
+        <h3 class="text-xl font-semibold mt-10 mb-3">Unit economics at maturity</h3>
+        <div class="overflow-x-auto -mx-2 sm:mx-0">
+          <table class="w-full text-sm border-collapse my-4 min-w-[500px]">
+            <thead>
+              <tr class="border-b border-neutral-300 dark:border-neutral-700 text-left">
+                <th class="py-2 px-3 font-semibold">Line</th>
+                <th class="py-2 px-3 font-semibold">₹ per active worker per year</th>
+              </tr>
+            </thead>
+            <tbody class="text-neutral-700 dark:text-neutral-300 align-top">
+              <tr class="border-b border-neutral-200 dark:border-neutral-800">
+                <td class="py-3 px-3 font-medium text-neutral-900 dark:text-neutral-100">Fully loaded cost</td>
+                <td class="py-3 px-3">₹40&nbsp;–&nbsp;90</td>
+              </tr>
+              <tr class="border-b border-neutral-200 dark:border-neutral-800">
+                <td class="py-3 px-3 font-medium text-neutral-900 dark:text-neutral-100">Blended revenue</td>
+                <td class="py-3 px-3">₹150&nbsp;–&nbsp;400</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-3 font-medium text-neutral-900 dark:text-neutral-100">Notes</td>
+                <td class="py-3 px-3 text-[13px] leading-relaxed">
+                  Blended revenue pulls from welfare-board contracts,
+                  union subscriptions, curated sponsorship placements,
+                  and direct-to-worker paid tiers. Customer acquisition
+                  cost is engineered close to zero: states and unions
+                  handle the distribution.
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-      </div>
-    </figure>
+      </section>
 
-    <h3 class="text-lg font-semibold mt-8 mb-2">Chunked translation for real-world documents.</h3>
-    <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed">
-      Real delivery-partner agreements run 90 or more clauses. Naive
-      per-clause translation hit Sarvam's rate limits and turned an 18KB
-      contract into an 11-minute translation job. Sreshtha packs
-      multiple clauses into single Mayura calls with boundary tokens
-      that the model preserves. The same document now completes in
-      under a minute, with roughly a tenth of the API calls.
-    </p>
-  </section>
+      <section>
+        <h3 class="text-xl font-semibold mt-10 mb-3">Paid tiers, positioned as a graduation path</h3>
+        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
+          Direct monetisation from workers exists but is never a barrier
+          to entry. Roughly ninety percent of workers only need
+          occasional help, and their usage is fully subsidised by
+          welfare-board and union contracts. The paid tiers are
+          engineered for the small population of heavy users who
+          actively analyse multiple contracts a month.
+        </p>
+        <ul class="space-y-3 my-6 list-none p-0">
+          <li class="rounded-lg border border-neutral-200 dark:border-neutral-800 p-4 bg-white dark:bg-neutral-900/40">
+            <div class="flex items-baseline gap-3">
+              <span class="text-[11px] font-semibold uppercase tracking-widest text-brand-700 dark:text-brand-200 shrink-0 whitespace-nowrap">Pay-per-scan</span>
+              <div>
+                <span class="text-neutral-700 dark:text-neutral-300">
+                  ₹49 for an additional contract analysis once the free
+                  quota is used up. Discounted credit packs for bulk
+                  purchase.
+                </span>
+              </div>
+            </div>
+          </li>
+          <li class="rounded-lg border border-neutral-200 dark:border-neutral-800 p-4 bg-white dark:bg-neutral-900/40">
+            <div class="flex items-baseline gap-3">
+              <span class="text-[11px] font-semibold uppercase tracking-widest text-brand-700 dark:text-brand-200 shrink-0 whitespace-nowrap">Sreshtha Pro</span>
+              <div>
+                <span class="text-neutral-700 dark:text-neutral-300">
+                  ₹99 per month. Removes the LLM cap entirely, unlocks
+                  offline mode, priority contract processing.
+                </span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
 
-  <figure class="mb-12">
-    <img
-      src="%BASE_URL%screenshots/product-idiom-library.png"
-      alt="Idiom library admin panel showing 67 idioms with source phrase, meaning, category badge, and coloured indicators for languages that have translations."
-      class="w-full rounded-xl border border-neutral-200 dark:border-neutral-800 mt-6"
-      loading="lazy"
-    >
-    <figcaption class="mt-2 text-[13px] leading-relaxed text-neutral-500 dark:text-neutral-400">
-      Idiom library admin. Coloured dots show which of the six Indic
-      languages have translations for a given phrase.
-    </figcaption>
-  </figure>
+    </div><!-- end #content-econ -->
 
-  <!-- Why now -->
-  <section>
-    <h2 class="text-2xl font-bold tracking-tight mt-14 mb-3">Why now</h2>
-    <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
-      Three tailwinds arrived within the last two years and none of
-      them existed simultaneously before:
-    </p>
-    <ul class="space-y-3 list-none p-0 my-6">
-      <li class="pl-4 border-l-2 border-brand-500">
-        <span class="font-semibold">Regulatory recognition.</span>
-        <span class="text-neutral-700 dark:text-neutral-300">
-          Sections 113 and 114 of the Code on Social Security 2020 <sup class="text-[10px]"><a href="#ref-2" class="text-brand-600 dark:text-brand-300">[2]</a></sup>
-          formally category-defined gig workers and created a legal basis
-          for welfare schemes. Karnataka <sup class="text-[10px]"><a href="#ref-4" class="text-brand-600 dark:text-brand-300">[4]</a></sup> and Rajasthan
-          <sup class="text-[10px]"><a href="#ref-3" class="text-brand-600 dark:text-brand-300">[3]</a></sup> now operate their own welfare boards.
-        </span>
-      </li>
-      <li class="pl-4 border-l-2 border-brand-500">
-        <span class="font-semibold">Indic-first AI matured.</span>
-        <span class="text-neutral-700 dark:text-neutral-300">
-          Sarvam AI's Mayura v1 provides production-quality translation
-          across the seven Indic languages Sreshtha ships with, including
-          fine-grained tone control that Western LLMs do not expose.
-          Combined with Google Gemini for reasoning, an application-layer
-          builder can now serve Indic-first users without training models.
-        </span>
-      </li>
-      <li class="pl-4 border-l-2 border-brand-500">
-        <span class="font-semibold">Smartphone reach caught up.</span>
-        <span class="text-neutral-700 dark:text-neutral-300">
-          Most gig workers already use their platform's app daily. A
-          worker-facing app meets them on infrastructure they already
-          own.
-        </span>
-      </li>
-    </ul>
-  </section>
+    <!-- ============ TAB 5: DISTRIBUTION ============ -->
+    <div class="tab-content" id="content-dist">
 
-  <!-- Distribution + moat -->
-  <section>
-    <h2 class="text-2xl font-bold tracking-tight mt-14 mb-3">Distribution and defensibility</h2>
-    <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
-      Sreshtha is a direct-to-worker app. Distribution scales through
-      three channels that are already asking for a product like this:
-    </p>
-    <ul class="space-y-2 list-none p-0 my-4 text-neutral-700 dark:text-neutral-300 leading-relaxed">
-      <li>State welfare boards need a worker-facing surface to make
-        their scheme registrations discoverable.</li>
-      <li>Union federations (IFAT, All India Gig Workers Union) need a
-        tool their members can use between meetings.</li>
-      <li>Platforms grading poorly on Fairwork India ratings
-        <sup class="text-[10px]"><a href="#ref-5" class="text-brand-600 dark:text-brand-300">[5]</a></sup> need a partnership that credibly
-        improves the fair-contracts dimension of their score.</li>
-    </ul>
-    <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed">
-      Defensibility compounds in the corpus. Every contract processed
-      adds template variants; every complaint drafted refines routing;
-      every idiom added by an admin tightens the translation register.
-      A general-purpose translator can be pointed at gig-worker
-      documents, but it cannot compound on curated corrections it does
-      not know it needs.
-    </p>
-  </section>
+      <section>
+        <h2 class="text-2xl font-bold tracking-tight mb-3">Free for the worker. Paid by institutions.</h2>
+        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
+          The willingness to pay among Indian blue-collar gig workers is
+          notoriously low, and the friction of digital payment
+          conversion eats what little margin remains. Sreshtha is
+          engineered as B2B2C from day one: worker-facing but sold to
+          institutions that have both the budget and the mandate to
+          reach this exact demographic.
+        </p>
+      </section>
 
-  <!-- Trajectory -->
-  <section>
-    <h2 class="text-2xl font-bold tracking-tight mt-14 mb-3">Trajectory</h2>
-    <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
-      Contract Reader is live. The four remaining modules ship on the
-      shell that already hosts it: shared auth, shared admin surface,
-      shared language and idiom infrastructure. The app itself is the
-      distribution unit; individual modules are the value delivered.
-    </p>
-    <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed">
-      Post-app-launch: fine-tuned OCR on the specific document formats
-      Indian gig workers actually get (delivery agreements, welfare
-      board applications, insurance policy statements), per-state
-      complaint routing, and direct scheme application via portal
-      integrations where those exist.
-    </p>
-  </section>
+      <section>
+        <h3 class="text-xl font-semibold mt-10 mb-3">Three institutional channels</h3>
+
+        <div class="rounded-lg border border-brand-200 dark:border-brand-900/60 p-5 my-4 bg-brand-50/40 dark:bg-brand-900/10">
+          <div class="text-[11px] font-semibold uppercase tracking-widest text-brand-700 dark:text-brand-200 mb-2">Channel 1 · State welfare boards</div>
+          <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed m-0">
+            States already collect a 1-5% cess on aggregator platform
+            transactions under the Code on Social Security 2020 and its
+            state-level counterparts. The money is there. What states
+            lack is a localised digital surface to distribute the
+            resulting benefits efficiently. Sreshtha solves the
+            distribution problem by packaging Rights Guide, Schemes
+            Finder, and Complaint Helper as an annual per-registered-worker
+            contract. Indicative pricing:
+            <strong>₹300&nbsp;–&nbsp;800 per registered worker per year</strong>.
+            The state gets turnkey digital infrastructure; Sreshtha
+            secures a scalable, high-volume revenue channel.
+          </p>
+        </div>
+
+        <div class="rounded-lg border border-brand-200 dark:border-brand-900/60 p-5 my-4 bg-brand-50/40 dark:bg-brand-900/10">
+          <div class="text-[11px] font-semibold uppercase tracking-widest text-brand-700 dark:text-brand-200 mb-2">Channel 2 · Labour unions (white-label)</div>
+          <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-3">
+            Unions have members and legitimacy but struggle to provide
+            daily digital value outside of crises. A union pays an
+            annual subscription sized to its membership. Members
+            download the app branded with the union's identity, powered
+            entirely by the Sreshtha stack.
+          </p>
+          <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed m-0">
+            The union additionally gets an <strong>advocacy dashboard</strong>:
+            aggregated, privacy-respecting data on which contract
+            clauses cluster around risk, where complaints geographically
+            concentrate, and which platforms generate the highest
+            grievance volume. Grievances can be custom-routed to the
+            union's own paralegal desks. Retention tool for the union,
+            zero-marketing-spend distribution for Sreshtha.
+          </p>
+        </div>
+
+        <div class="rounded-lg border border-brand-200 dark:border-brand-900/60 p-5 my-4 bg-brand-50/40 dark:bg-brand-900/10">
+          <div class="text-[11px] font-semibold uppercase tracking-widest text-brand-700 dark:text-brand-200 mb-2">Channel 3 · Curated sponsors</div>
+          <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed m-0">
+            The platform is a qualified environment for insurance
+            providers and responsibly-priced fintechs. Sponsorship
+            placements (accident insurance, low-APR credit products,
+            savings products) sit against a strict allowlist of
+            IRDAI-registered insurers and RBI-regulated lenders. Every
+            placement is audited before appearing. This is not an ad
+            network. This is a curated referral surface with
+            regulator-verified counterparties.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h3 class="text-xl font-semibold mt-10 mb-3">Bright lines</h3>
+        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
+          Three non-negotiables, published so partners and workers can
+          hold Sreshtha to them:
+        </p>
+        <ul class="space-y-3 list-none p-0 my-4">
+          <li class="rounded-lg border border-red-300/60 dark:border-red-900/60 bg-red-50/50 dark:bg-red-950/20 p-4">
+            <span class="font-semibold text-red-800 dark:text-red-200">No open ad networks.</span>
+            <span class="text-neutral-700 dark:text-neutral-300">
+              No Google Ads, no Meta audience network. Programmatic
+              inventory means loss of control over what gets served to
+              a vulnerable audience, and it opens the door to predatory
+              lending advertising.
+            </span>
+          </li>
+          <li class="rounded-lg border border-red-300/60 dark:border-red-900/60 bg-red-50/50 dark:bg-red-950/20 p-4">
+            <span class="font-semibold text-red-800 dark:text-red-200">No data sale.</span>
+            <span class="text-neutral-700 dark:text-neutral-300">
+              To brokers, to platforms, to research firms, ever.
+              Anonymisation does not qualify as an exception. Workers
+              are exposing their legal vulnerabilities on this
+              platform; selling that data destroys the platform's
+              credibility the moment it happens.
+            </span>
+          </li>
+          <li class="rounded-lg border border-red-300/60 dark:border-red-900/60 bg-red-50/50 dark:bg-red-950/20 p-4">
+            <span class="font-semibold text-red-800 dark:text-red-200">No commission-earning referrals above 24% APR.</span>
+            <span class="text-neutral-700 dark:text-neutral-300">
+              A hard cap on the effective interest rate of any lender
+              partner that Sreshtha earns commission from. Above the
+              cap, the platform will not accept the placement even if
+              the lender is regulator-approved.
+            </span>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h3 class="text-xl font-semibold mt-10 mb-3">Defensibility compounds in the corpus</h3>
+        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+          Every contract processed adds template variants to the corpus.
+          Every complaint drafted refines the routing rules. Every idiom
+          added by an admin tightens the translation register for every
+          future worker. A general-purpose translator can be pointed at
+          gig-worker documents, but it cannot compound on curated
+          corrections it does not know it needs. The moat is built one
+          contract, one idiom, one routing rule at a time.
+        </p>
+      </section>
+
+    </div><!-- end #content-dist -->
+
+  </div><!-- end .tabs -->
 
   <hr class="my-16 border-neutral-200 dark:border-neutral-800">
 
-  <!-- Repo -->
+  <!-- Repo (shared, always visible) -->
   <section>
     <h2 class="text-2xl font-bold tracking-tight mb-3">Source</h2>
     <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed">
@@ -402,7 +873,7 @@
     </p>
   </section>
 
-  <!-- References -->
+  <!-- References (shared) -->
   <section id="references">
     <h2 class="text-2xl font-bold tracking-tight mt-14 mb-3">References</h2>
     <ol class="space-y-3 text-[14px] leading-relaxed text-neutral-600 dark:text-neutral-400 list-decimal pl-5">
@@ -449,7 +920,7 @@
     <span class="font-semibold text-neutral-700 dark:text-neutral-300">Sreshtha</span>
     · श्रेष्ठ · for India's gig workers.
   </p>
-  <p class="mb-1">Built with Google Gemini, Sarvam Mayura, EasyOCR, FastAPI, and React.</p>
+  <p class="mb-1">Built with Google Gemini 2.5 Flash on Vertex AI, Sarvam Mayura, EasyOCR, FastAPI, and React.</p>
   <p>
     Sreshtha delivers information, not legal advice. For formal help,
     workers can call India Labourline at 1800-419-1550.
@@ -458,7 +929,7 @@
 
 <script type="module">
   // Vite entry: imports CSS so the plugin's HMR + build pipeline
-  // picks it up. No other JS runs on this page.
+  // picks it up.
   import '/src/main.css'
 </script>
 

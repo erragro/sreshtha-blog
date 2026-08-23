@@ -48,3 +48,59 @@ body {
     background: rgb(15 15 15);
   }
 }
+
+/* Radio-based tabs. No JS. `:checked ~ #content-*` reveals content.
+   Tabs remember state within a session but not across reloads (radios
+   reset). Trade-off accepted for zero-JS. */
+.tabs input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
+.tab-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  border-bottom: 1px solid rgb(229 229 229);
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+@media (prefers-color-scheme: dark) { .tab-nav { border-color: rgb(38 38 38); } }
+.tab-nav label {
+  display: inline-block;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(115 115 115);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: color 0.12s, border-color 0.12s;
+  margin-bottom: -1px;
+}
+.tab-nav label:hover { color: rgb(64 64 64); }
+@media (prefers-color-scheme: dark) {
+  .tab-nav label { color: rgb(163 163 163); }
+  .tab-nav label:hover { color: rgb(229 229 229); }
+}
+.tab-content { display: none; }
+#tab-overview:checked ~ .tab-content#content-overview,
+#tab-how:checked      ~ .tab-content#content-how,
+#tab-google:checked   ~ .tab-content#content-google,
+#tab-econ:checked     ~ .tab-content#content-econ,
+#tab-dist:checked     ~ .tab-content#content-dist       { display: block; }
+
+#tab-overview:checked ~ .tab-nav label[for="tab-overview"],
+#tab-how:checked      ~ .tab-nav label[for="tab-how"],
+#tab-google:checked   ~ .tab-nav label[for="tab-google"],
+#tab-econ:checked     ~ .tab-nav label[for="tab-econ"],
+#tab-dist:checked     ~ .tab-nav label[for="tab-dist"] {
+  color: var(--color-brand-700);
+  border-bottom-color: var(--color-brand-500);
+}
+@media (prefers-color-scheme: dark) {
+  #tab-overview:checked ~ .tab-nav label[for="tab-overview"],
+  #tab-how:checked      ~ .tab-nav label[for="tab-how"],
+  #tab-google:checked   ~ .tab-nav label[for="tab-google"],
+  #tab-econ:checked     ~ .tab-nav label[for="tab-econ"],
+  #tab-dist:checked     ~ .tab-nav label[for="tab-dist"] {
+    color: var(--color-brand-200);
+  }
+}
